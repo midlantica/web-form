@@ -1,6 +1,6 @@
 # web-form
 <!-- ![GitHub Logo](https://github.com/midlantica/web-form/blob/master/image.png) -->
-Format: ![preview]([url](https://github.com/midlantica/web-form/blob/master/image.png))
+Format: ![preview]([https://github.com/midlantica/web-form/blob/master/image.png])
 
 ## Project setup
 ```
