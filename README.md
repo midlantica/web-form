@@ -1,6 +1,5 @@
 # Vue web-form
 Preview:
-
 ![preview](https://github.com/midlantica/web-form/blob/master/image.png)
 
 ## Project setup
