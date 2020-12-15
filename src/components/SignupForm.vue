@@ -16,10 +16,11 @@
 
     <div>
       <label>Skills</label>
-      <input type="text" v-model="tempSkill" @keyup.ctrl="addSkill" >
+      <input type="text" v-model="tempSkill" @keyup="addSkill" >
       <div v-for="skill in skills" :key="skill" class="pill">
         <span @click="deleteSkill(skill)">{{ skill }}</span>
       </div>
+      <p v-if="mustBeUniqueSkill" class="warning">Must be unique a skill!</p>
     </div>
 
     <div class="terms">
@@ -51,15 +52,19 @@ export default {
       terms: false,
       tempSkill: '',
       skills: [],
-      passwordError: ''
+      passwordError: '',
+      mustBeUniqueSkill: false
     }
   },
   methods: {
     addSkill(e) {
       //console.log(e);
       if(e.key === ',' && this.tempSkill) {
+        this.tempSkill = this.tempSkill.slice(0, -1)
         if (!this.skills.includes(this.tempSkill)) {
           this.skills.push(this.tempSkill)
+        } else if (this.skills.includes(this.tempSkill)) {
+          this.mustBeUniqueSkill = true
         }
         this.tempSkill = ''
       }
@@ -131,7 +136,7 @@ export default {
     display: inline-block;
     margin: 20px 10px 0 0;
     padding: 6px 12px;
-    background: #eee;
+    background: hsl(0deg 0% 83%);
     border-radius: 20px;
     font-size: 12px;
     letter-spacing:1px;
@@ -157,6 +162,12 @@ export default {
     color: red;
     margin-top: 10px;
     font-size: .8rem;
+    font-weight: bold;
+  }
+
+  .warning {
+    color: hsla(0, 100%, 42%, 0.75);
+    font-style: italic;
     font-weight: bold;
   }
 </style>
